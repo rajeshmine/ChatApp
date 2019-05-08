@@ -15,7 +15,7 @@ var DBConfig = require('./config');
 var mongoDB = DBConfig.url;
 const Token = new TokenGenerator(256, TokenGenerator.BASE58);
 const Token2 = new TokenGenerator(512, TokenGenerator.BASE66);
-
+ 
 mongoose.connect(mongoDB, {
   dbName: 'PIM',
   useNewUrlParser: true
@@ -56,16 +56,13 @@ app.use(function (req, res, next) {
 
 app.use('/users', users);
 
-var ProjectID = '';
 
 
 // Project Id Validation
 var userArray = [];
 io.use((socket, next) => {
-  ProjectID = socket.handshake.query.ProjectID;
   userArray[socket.handshake.query.ClientUID] = socket.id;
-  var findObj = {
-    Projectid: socket.handshake.query.ProjectID,
+  var findObj = {  
     Uid: socket.handshake.query.UserID,
     Status: 'Y'
   };
@@ -93,7 +90,6 @@ io.on('connection', (socket) => {
   socket.on('Add User', (data) => {
     let temp = {
       UserID: Token.generate(),
-      Projectid: ProjectID,
       Details: data
     }
     db.collection('TempClientDetails').insert(temp).then(result => {
@@ -102,10 +98,8 @@ io.on('connection', (socket) => {
   });
 
   socket.on('User List', () => {
-    let temp = {
-      Projectid: ProjectID
-    }
-    db.collection('TempClientDetails').find(temp).toArray().then(result => {
+    
+    db.collection('TempClientDetails').find({}).toArray().then(result => {
       socket.emit('User List', result);
     });
   });
@@ -113,7 +107,6 @@ io.on('connection', (socket) => {
   socket.on('New Message', (data) => {
     let temp = {
       MessageID: Token.generate(),
-      Projectid: ProjectID,
       Content: data
     }
     db.collection('ClientChatDetails').insert(temp).then(result => {
@@ -122,10 +115,8 @@ io.on('connection', (socket) => {
   });
 
   socket.on('All Messages', () => {
-    let temp = {
-      Projectid: ProjectID
-    }
-    db.collection('ClientChatDetails').find(temp).toArray().then(result => {
+  
+    db.collection('ClientChatDetails').find({}).toArray().then(result => {
       socket.emit('All Messages', result);
     });
   });

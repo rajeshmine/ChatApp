@@ -1,5 +1,5 @@
 let DefaultDBConfig = {
-    url: `mongodb+srv://pimuser:user@pim-bkh0o.azure.mongodb.net/test?retryWrites=true`
+    url: `mongodb+srv://mine:mine@cluster0-y8lkc.mongodb.net/test`
 }
 
 module.exports = DefaultDBConfig;
