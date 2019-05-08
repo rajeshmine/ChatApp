@@ -1,0 +1,168 @@
+body {
+  font-family: 'Barlow', sans-serif;
+  line-height: 1.5;
+  background: #f8f8f8;
+  scroll-behavior: smooth;
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  outline: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #000;
+  outline: 1px solid slategrey;
+}
+
+a {
+  color: #3a555e;
+}
+
+
+.wraper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.feild {
+  display: block;
+  width: 450px;
+}
+
+.feild label {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  text-align: left;
+  color: #3a555e;
+  display: block;
+  opacity: 1;
+}
+
+.feild input,
+.feild textarea {
+  width: 100%;
+  height: 48px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  border: solid 1px #e6ebed;
+  padding: 10px 16px;
+  font-size: 16px;
+  line-height: normal;
+  color: #3a555e;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  resize: none;
+  margin-top: 16px;
+}
+
+.feild textarea {
+  height: 136px;
+}
+
+.feild .sendbtn {
+  width: 180px;
+  margin: 0 auto;
+  color: #fff;
+  font-weight: 500;
+  background: #E91E63;
+  border-radius: 4px;
+  border: none;
+}
+
+.formdiv {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formdiv .stylediv {
+  box-shadow: 0 16px 20px 0 rgba(2, 60, 81, 0.04);
+  padding: 35px;
+  background: #fff;
+  text-align: center;
+}
+
+.formdiv form {
+  margin-top: 15px;
+}
+
+.footerlogo:hover,
+.footerlogo:focus {
+  text-decoration: none;
+  color: #4baf50;
+}
+
+.footerlogo {
+  color: #4baf50;
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+
+.login_btn,
+.signup_btn,
+.get_mail_btn {
+  width: 180px !important;
+  margin: 20px auto 0 !important;
+  color: #fff !important;
+  font-weight: 500 !important;
+  background: #4caf50 !important;
+  border-radius: 50px !important;
+  border: none !important;
+  height: auto !important;
+  line-height: normal !important;
+  box-shadow: 2px 4px 18px 0 #4caf5070 !important;
+  -webkit-border-radius: 50px !important;
+  -moz-border-radius: 50px !important;
+  -ms-border-radius: 50px !important;
+  -o-border-radius: 50px !important;
+}
+
+.btnflexfeild .rightbtn {
+  float: right;
+  width: 150px;
+}
+
+.signupdiv {
+  display: none;
+}
+
+.signupdiv .btnflexfeild .rightbtn {
+  float: right;
+  width: 150px;
+  margin-top: 20px !important;
+}
+
+.temp_btn {
+  width: 180px;
+  background: transparent !important;
+  height: auto !important;
+  border: none !important;
+  box-shadow: 2px 4px 18px 0 #55555547;
+}

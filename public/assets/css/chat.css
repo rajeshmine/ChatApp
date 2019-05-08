@@ -1,0 +1,377 @@
+body {
+  font-family: 'Barlow', sans-serif !important;
+  line-height: 1.5;
+  background: #f0f5f7;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  outline: 0;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+  outline: 1px solid slategrey;
+}
+
+a {
+  color: #3a555e;
+}
+
+
+.btnstyle {
+  background: #ffffff40 !important;
+  margin: 15px 5px;
+  padding: 0px 11px !important;
+  border-radius: 4px;
+  vertical-align: initial;
+}
+
+.fstdrop {
+  box-shadow: none;
+  border-radius: 2px;
+  border: none;
+  background: #9E9E9E;
+  color: #fff;
+  width: max-content;
+  padding: 8px;
+}
+
+.fstdrop p span {
+  font-weight: 500;
+  font-size: 18px;
+  float: right;
+}
+
+.fstdrop .logout {
+  text-align: right;
+  margin-top: 65px;
+  border-top: 1px solid #fff;
+}
+
+.fstdrop .logout a {
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px 22px;
+  line-height: 50px !important;
+}
+
+.contentflow {
+  width: 100%;
+  min-height: 200px;
+}
+
+.flexdiv {
+  display: flex;
+  min-height: calc(100vh - 70px);
+  position: sticky;
+  top: 70px;
+  flex: 1;
+  flex-direction: row;
+}
+
+#aside::-webkit-scrollbar {
+  width: 5px;
+}
+
+#aside::-webkit-scrollbar-thumb {
+  background-color: slategrey;
+  outline: 1px solid slategrey;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+#aside {
+  flex: 1;
+  height: calc(100vh - 235px);
+  overflow-x: hidden;
+  background: #19202b;
+  box-shadow: 0 5px 16px 0 rgba(6, 34, 44, 0.08);
+  padding: 10px 0px 0 0;
+  color: #fff;
+}
+
+
+
+/* #aside ul {
+  border-bottom: 1px solid #404854;
+} */
+
+#aside li {
+  line-height: 20px;
+  color: #fff;
+  transition: 0.2s all linear;
+  padding: 10px 5px;
+  cursor: pointer;
+  border-bottom: 1px solid #404854;
+}
+
+#aside li:hover {
+  background: #ffffff1f;
+  border-radius: 4px;
+}
+
+#aside li a {
+  color: #fff;
+  width: 100vw;
+  cursor: pointer;
+  line-height: 2;
+  padding: 5px 12px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+#aside li a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+#aside li a i {
+  margin-right: 5px;
+}
+
+section#root {
+  flex: 4;
+  max-height: calc(100vh - 0px);
+  overflow-x: hidden;
+  height: auto;
+}
+
+
+.bottomdiv {
+  width: calc(100% - 80%);
+  min-height: 50px;
+  position: fixed;
+  bottom: 0;
+  margin-top: 5px;
+  background: #181f2b;
+}
+
+.bottomdiv li {
+  border-top: 1px solid #404854;
+}
+
+.ProfileDiv {
+  min-height: 185px;
+  border-bottom: 1px solid #404854;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+
+#lftSection {
+  flex: 1;
+  min-height: calc(100vh - 50px);
+  overflow: hidden;
+  background: #181f2b;
+  position: sticky;
+  top: 0;
+}
+
+#profileImg {
+  width: 100px;
+  padding: 2px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #fff;
+  height: 85px;
+}
+
+#UName {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-top: 5px;
+}
+
+#UEmail {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.HoleChetDiv {
+  display: flex;
+  max-height: 100vh;
+  flex: 1;
+  visibility: hidden;
+  flex-direction: column;
+}
+
+#userinfobar {
+  position: relative;
+  height: 57px;
+  background: #181f2b;
+  border-bottom: 2px solid #404854;
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  border-left: 2px solid #404854;
+}
+
+#chatDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  height: calc(100vh - 57px);
+  overflow: auto;
+}
+
+#txtbxdiv {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #000;
+  height: 50px;
+}
+
+
+
+.feild input,
+.feild textarea {
+  width: 100%;
+  height: 50px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  border: solid 1px #e6ebed;
+  padding: 10px 16px;
+  font-size: 16px;
+  line-height: normal;
+  color: #3a555e;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  resize: none;
+}
+
+.lftDiv {
+  margin-top: 10px;
+}
+
+.lftDiv p,
+.rhtDiv p {
+  float: left;
+  padding: 7px 25px;
+  background: #181f2b;
+  border-radius: 25px;
+  color: #ffff;
+  font-size: 15px;
+  word-break: break-all;
+  max-width: 75vh;
+  box-shadow: 9px 9px 18px 0 rgba(6, 34, 44, 0.04);
+
+}
+
+
+.rhtDiv {
+  margin-top: 10px;
+}
+
+.rhtDiv p {
+  float: right;
+  background: #fff;
+  color: #616161;
+  box-shadow: 9px 9px 18px 0 rgba(6, 34, 44, 0.04);
+
+}
+
+.usrprofimg {
+  width: 45px;
+  margin-left: 30px;
+  height: 45px;
+  border-radius: 100%;
+  background: #fff;
+  padding: 2px;
+}
+
+#clientName {
+  font-size: 20px;
+  color: #fff;
+  line-height: 45px;
+  margin-left: 10px;
+}
+
+/*Huge thanks to @tobiasahlin at http://tobiasahlin.com/spinkit/ */
+.spinner {
+  width: 70px;
+  margin-left: 15px;
+}
+
+.spinner>div {
+  width: 10px;
+  height: 10px;
+  background-color: #333;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0)
+  }
+
+  40% {
+    -webkit-transform: scale(1.0)
+  }
+}
+
+@keyframes sk-bouncedelay {
+
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+#loading {
+  display: none;
+}

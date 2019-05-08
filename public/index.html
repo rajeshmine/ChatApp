@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chat Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+    <link rel="stylesheet" href="./assets/css/nprogress.min.css">
+
+
+    <!-- Custom -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="formdiv">
+        <div class="stylediv">
+            <p class="footerlogo" id="footerlogo"> <i class="fa fa-opencart" aria-hidden="true"></i> Chat App</p>
+            <div class="logindiv">
+                <p>Signin by entering the information below</p>
+                <form id="loginform" onsubmit="Login();" autocomplete="off">
+                    <div class="feild">
+                        <!-- <label>Email address</label> -->
+                        <input type="email" id="log_email" placeholder="Email" required>
+                    </div>
+                    <div class="feild">
+                        <!-- <label>Password</label> -->
+                        <input type="Password" id="log_psw" placeholder="Password" required="">
+                    </div>
+                    <div class="feild btnflexfeild">
+                        <input type="submit" class="login_btn" value="Login">
+                        <input type="button" class="temp_btn rightbtn" id="signupopen" value="Sign Up">
+                    </div>
+                </form>
+            </div>
+            <div class="signupdiv" aria-disabled="true">
+                <p>SignUp by entering the information below</p>
+                <form action="#" autocomplete="off" onsubmit="signup();" id="signupform">
+                    <div class="feild">
+                        <input type="text" placeholder="First name" id="fst_name" required style="width: 49%;margin-right: 2px;">
+                        <input type="text" placeholder="Last name" id="lst_name" required style="width: 50%;float:right"
+                            >
+                    </div>
+                    <div class="feild">
+                        <input type="email" id="sign_up_email" placeholder="Email" required>
+                    </div>
+                    <div class="feild">
+                        <input type="password" id="newpsw" placeholder="Password" minlength="8" required style="width: 49%;margin-right: 2px;">
+
+                        <input type="password" id="confirmpsw" placeholder="Confirm Password" minlength="8" required
+                            style="width: 50%;float:right">
+
+                    </div>
+                    <div class="feild btnflexfeild">
+                        <input type="submit" class="signup_btn" value="Sign Up">
+                        <input type="button" class="temp_btn rightbtn" id="loginopen" value="Login">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- Script Will come Here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/retina.js/2.1.3/retina.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <!-- Custom lib -->
+    <script src="./assets/javascript/config.js"></script>
+    <script src="./assets/javascript/alert.js"></script>
+    <script src="./assets/javascript/apicall.js"></script>
+    <script src="./assets/javascript/script.js"></script>
+
+</body>
+
+</html>
