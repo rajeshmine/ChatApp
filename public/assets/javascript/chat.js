@@ -31,8 +31,6 @@ formdata.append('userid', userid);
 $(document).ready(function () {
     socket = io(BaseURL, {
         query: {
-            ProjectID: projectID,
-            databaseURL: 'ERSHTTZ27KYN2LRQGRS672EBP',
             UserID: userid,
             ClientUID: sessionStorage.UI
         }
@@ -48,7 +46,7 @@ window.onload = () => {
     });
 
     socket.on('reconnect', () => {
-        console.log('you have been reconnected') 
+        console.log('you have been reconnected')
     });
 
     socket.on('reconnect_error', () => {
@@ -155,7 +153,7 @@ async function UserListGet() {
 
 
 async function UserListAppend(data) {
-    // console.log(data, Profile_UID)
+ 
     $userListAppend.empty();
     let html = "";
     let TempData;
@@ -181,6 +179,7 @@ async function ChatOpen(Name, ID) {
 async function SendMessage() {
     event.preventDefault();
     let message = $inputMessage.val();
+    console.log(message)
     if (message.length > 0) {
         $inputMessage.val('');
         let senddata = {
@@ -197,6 +196,7 @@ async function SendMessage() {
         }];
         addMessage(tempchatArray);
     }
+    
 }
 
 async function oldMessages() {
@@ -205,8 +205,8 @@ async function oldMessages() {
 }
 
 let t = [];
-async function addMessage(data) { 
-    data = data.filter(a => a.Content.to === Profile_UID || a.Content.from === Profile_UID); 
+async function addMessage(data) {
+    data = data.filter(a => a.Content.to === Profile_UID || a.Content.from === Profile_UID);
     data.forEach(item => {
         let lftdiv = '<div class="lftDiv"><p>' + item.Content.Message + '</p></div>';
         let rhtdiv = '<div class="rhtDiv"><p>' + item.Content.Message + '</p></div>';

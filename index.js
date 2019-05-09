@@ -15,7 +15,7 @@ var DBConfig = require('./config');
 var mongoDB = DBConfig.url;
 const Token = new TokenGenerator(256, TokenGenerator.BASE58);
 const Token2 = new TokenGenerator(512, TokenGenerator.BASE66);
- 
+
 mongoose.connect(mongoDB, {
   dbName: 'PIM',
   useNewUrlParser: true
@@ -27,7 +27,7 @@ var db = mongoose.connection;
 
 
 
-var port = process.env.PORT || 3002 ;
+var port = process.env.PORT || 3002;
 var users = require('./routes/users');
 
 
@@ -62,15 +62,7 @@ app.use('/users', users);
 var userArray = [];
 io.use((socket, next) => {
   userArray[socket.handshake.query.ClientUID] = socket.id;
-  var findObj = {  
-    Uid: socket.handshake.query.UserID,
-    Status: 'Y'
-  };
-  db.collection('projectdetails').findOne(findObj, (err, result) => {
-    if (err) return socket.disconnect(true);
-    if (result == null) return socket.disconnect(true);
-    next();
-  });
+  next();
 });
 
 
@@ -98,7 +90,6 @@ io.on('connection', (socket) => {
   });
 
   socket.on('User List', () => {
-    
     db.collection('TempClientDetails').find({}).toArray().then(result => {
       socket.emit('User List', result);
     });
@@ -115,7 +106,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('All Messages', () => {
-  
+
     db.collection('ClientChatDetails').find({}).toArray().then(result => {
       socket.emit('All Messages', result);
     });

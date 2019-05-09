@@ -46,7 +46,7 @@ router.post("/SignUp", (req, res) => {
         Email: req.body.email,
         Uid: tempUid,
         Password: passwordHash.generate(temp_password),
-        isVerified: false,
+        isVerified: true,
         Status: "Y"
       }
     };
