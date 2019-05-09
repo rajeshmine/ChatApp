@@ -27,19 +27,27 @@ var connected = false;
 formdata.delete('uid');
 formdata.delete('projectid');
 formdata.append('projectid', projectID);
-formdata.append('userid', userid);
-$(document).ready(function () {
+formdata.append('userid', userid); 
+
+window.onload = () => {
+
     socket = io(BaseURL, {
         query: {
-            UserID: userid,
             ClientUID: sessionStorage.UI
         }
     });
-});
-window.onload = () => {
-
     $inputMessage.focus();
 
+    window.emojiPicker = new EmojiPicker({
+        emojiable_selector: '[data-emojiable=true]',
+        assetsPath: './assets/lib/img/',
+        popupButtonClasses: 'fa fa-smile-o'
+    });
+    window.emojiPicker.discover();
+
+
+
+    console.log(socket)
     // Socket Connection
     socket.on('login', (data) => {
         connected = true;
@@ -173,7 +181,7 @@ async function ChatOpen(Name, ID) {
     }).removeClass('animated fadeInRight').addClass('animated fadeInRight');
     $ClientName.text(Name);
     oldMessages();
-   
+
 }
 
 
@@ -199,13 +207,13 @@ async function SendMessage() {
             Content: senddata
         }];
         addMessage(tempchatArray);
-        $messages.animate({scrollTop:$messages[0].scrollHeight}, 'slow');
+        $messages.animate({ scrollTop: $messages[0].scrollHeight }, 'slow');
     }
 }
 
 async function oldMessages() {
     $messages.empty();
-    socket.emit('All Messages');   
+    socket.emit('All Messages');
 }
 
 let t = [];
@@ -217,7 +225,7 @@ async function addMessage(data) {
         if (item.Content.from === openedChatId && item.Content.to === Profile_UID) return $messages.append(lftdiv);
         if (item.Content.to === openedChatId && item.Content.from === Profile_UID) return $messages.append(rhtdiv);
     });
-    $messages.animate({scrollTop:$messages[0].scrollHeight}, 'slow');
+    $messages.animate({ scrollTop: $messages[0].scrollHeight }, 'slow');
 }
 
 async function signout() {
