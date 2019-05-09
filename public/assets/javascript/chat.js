@@ -153,7 +153,7 @@ async function UserListGet() {
 
 
 async function UserListAppend(data) {
- 
+
     $userListAppend.empty();
     let html = "";
     let TempData;
@@ -173,15 +173,19 @@ async function ChatOpen(Name, ID) {
     }).removeClass('animated fadeInRight').addClass('animated fadeInRight');
     $ClientName.text(Name);
     oldMessages();
+   
 }
 
 
 async function SendMessage() {
     event.preventDefault();
-    let message = $inputMessage.val();
-    console.log(message)
+    let message;
+    message = $inputMessage.val();
+    if (message === '')
+        message = $('.emoji-wysiwyg-editor').text();
     if (message.length > 0) {
         $inputMessage.val('');
+        $('.emoji-wysiwyg-editor').empty();
         let senddata = {
             from: Profile_UID,
             to: openedChatId,
@@ -195,13 +199,14 @@ async function SendMessage() {
             Content: senddata
         }];
         addMessage(tempchatArray);
+        console.log($messages)
+        $messages.animate({scrollTop:$messages[0].scrollHeight}, 'slow');
     }
-    
 }
 
 async function oldMessages() {
     $messages.empty();
-    socket.emit('All Messages');
+    socket.emit('All Messages');   
 }
 
 let t = [];
@@ -213,6 +218,7 @@ async function addMessage(data) {
         if (item.Content.from === openedChatId && item.Content.to === Profile_UID) return $messages.append(lftdiv);
         if (item.Content.to === openedChatId && item.Content.from === Profile_UID) return $messages.append(rhtdiv);
     });
+    $messages.animate({scrollTop:$messages[0].scrollHeight}, 'slow');
 }
 
 
