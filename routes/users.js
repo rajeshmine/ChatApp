@@ -38,41 +38,29 @@ router.post("/SignUp", (req, res) => {
   var temp_password = req.body.password;
  
 
-    const UserDetails = {
-     
+    const UserDetails = {     
       Details: {
         Firstname: req.body.firstname,
         Lastname: req.body.lastname,
         Email: req.body.email,
         Uid: tempUid,
         Password: passwordHash.generate(temp_password),
-        isVerified: false,
+        isVerified: true,
         Status: "Y"
       }
     };
-
-
+    
     db.collection('TempClientDetails').insertOne(UserDetails, (err, result) => {
-      // Mail Send Data
-      MailSendercredentials = {
-        FromMail: 'aswinnsh@gmail.com',
-        To: req.body.email,
-        Subject: `Verification Mail.\n---Chat App.`,
-        Html: `<!DOCTYPE html><html lang="en"><head><title>Check Mail Status</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"><style>body {font-family: 'Varela Round', sans-serif;font-size: 14px;line-height: 1.42857143;color: #333;background-color: #c7ccdf;}.mycard{    background-color: #fff;border-radius: 5px;padding: 30px;margin: 20px auto;width: 650px;border: 1px solid #c7ccde;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);font-family: 'Varela Round', sans-serif;}.mycard .cardheader h5{font-size: 35px;color: #000;font-weight: 600;letter-spacing: 1px;margin: 0;}.mycontent{margin-bottom: 20px;}.mycontent p{font-size: 18px;text-align: justify;color: #8f909c; line-height: 30px;margin-bottom: 30px;}.btn{padding: 15px 50px;outline: none;display: inline-block;padding: 6px 12px; margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;}.btn-primary {color: #fff;background-color: #0260ee !important;border-color: #0260ee !important;width: 100%;font-size: 20px;} .btn-primary:hover {color: #fff;background-color: #0260ee !important;border-color: #0260ee !important;}
-          .cardfooter p{ color:#c9cad0;}a{cursor: pointer;}</style></head><body>  <div class="mycard"><div class="cardheader"><h5>Verify your email</h5></div><div class="mycontent"><p>Hi ${req.body.firstname} ${req.body.lastname}! Use the Link below to verify your email and start enjoying with Chat App (team). </p>
-          <a href="https://chat0305.herokuapp.com/users/Verify_user/${tempUid}" target="_blank"><button type="button" class="btn btn-primary">Verify email</button></a></div> <div class="cardfooter"><p>Questions? Email Us at <a href="#">noreply@gmail.com</a></p></div></div></body></html>`
-      }
-      Functions_controller.MailSend(MailSendercredentials, (err, MailStatus) => {
+     
         if (err) return res.json({
           StatusCode: 503,
           Response: err.message
         });
         return res.json({
           StatusCode: 200,
-          Response: "Verification link has send to your mail id."
+          Response: "User Created Successfully"
         });
-      });
+     
     });
 
 });
