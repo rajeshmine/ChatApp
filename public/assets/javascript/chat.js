@@ -41,7 +41,10 @@ window.onload = () => {
     $inputMessage.focus();
 
     // Socket Connection
-   
+    socket.on('login', (data) => {
+        connected = true;
+    });
+
     socket.on('reconnect', () => {
         console.log('you have been reconnected')
     });
