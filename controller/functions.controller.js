@@ -15,8 +15,8 @@ exports.PasswordCheck = async function (psw, hash, callback) {
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'aswinnsh@gmail.com',
-        pass: 'aswin3009'
+        user: '05veera05@gmail.com',
+        pass: 'Veera#123'
     }
 });
 // Mail Send
