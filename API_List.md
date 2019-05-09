@@ -2,7 +2,6 @@
 # POST
 Header Set
 @ userid
-@ projectid
 
 # http://192.168.1.45:3000/users/SignUp 
 
@@ -20,28 +19,7 @@ Header Set
 # http://192.168.1.45:3001/users/Login
 @ username
 @ password
-@ projectid
 
-<!-- Forgot password -->
-# POST
-Header Set
-@ userid
-@ projectid
-
-# http://192.168.1.45:3001/users/Forgotpsw/05veera05@gmail.com
-@ email 
-
-
-
-<!-- Change Password -->
-# POST
-# http://192.168.1.45:3001/users/ChangePsw
-@ email
-@ o_password
-@ n_password
-
-
-#
 #
 #
 #

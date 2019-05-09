@@ -2,7 +2,7 @@
   "name": "chatapp",
   "version": "1.0.0",
   "author": "Rajesh",
-  "description": "This App to listen the port no 3001",
+  "description": "This App to listen the port no 3002",
   "scripts": {
     "start": "node index.js"
   },

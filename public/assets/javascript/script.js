@@ -13,51 +13,25 @@ window.onload = () => {
         $('#signupform,#loginform')[0].reset();
         $('.signupdiv,.logindiv').slideToggle();
     });
-
     $('#loginopen').on('click', () => {
         $('#loginform,#signupform')[0].reset();
         $('.signupdiv,.logindiv').slideToggle();
     });
-
     // Socket Connection
     socket = io(BaseURL, {
-        query: {
-            ProjectID: projectID,
-            databaseURL: 'ERSHTTZ27KYN2LRQGRS672EBP',
-            UserID: userid
-        }
+        query: { ProjectID: projectID, databaseURL: 'ERSHTTZ27KYN2LRQGRS672EBP', UserID: userid }
     });
-
-
-    socket.on('reconnect', () => {
-        console.log('you have been reconnected')
-
-    });
-
-    socket.on('reconnect_error', () => {
-        console.log('attempt to reconnect has failed');
-    });
-
-    socket.on('SubscribersMessage', (data) => {
-        console.log(data);
-        alert(data);
-    });
+    socket.on('reconnect', () => { console.log('you have been reconnected') });
+    socket.on('reconnect_error', () => { console.log('attempt to reconnect has failed'); });
+    socket.on('SubscribersMessage', (data) => { console.log(data); alert(data); });
 }
-
-
-function subscribe() {
-    console.log("data");
-    socket.emit('Subscribe');
-}
-
-
+function subscribe() { socket.emit('Subscribe'); }
 function SendNotification() {
     event.preventDefault();
     let Information = $('#info').val();
     socket.emit('SubscribersMessage', Information);
     $('#info').val('')
 }
-
 async function Login() {
     event.preventDefault();
     formdata.delete('username');
@@ -67,25 +41,18 @@ async function Login() {
     formdata.append('username', email);
     formdata.append('password', password);
     let url = BaseURL + 'users/Login';
-    console.log(formdata.get('username'))
     API_call(url, 'POST', formdata, (data) => {
-        if (data.StatusCode === 200) {
-            $('#loginform')[0].reset();
-            return sessionstore(data)
-        } else {
-            showalert('red', 'Error while login!!!', data.Response);
-        }
+        if (data.StatusCode === 200) { $('#loginform')[0].reset(); return sessionstore(data) }
+        else { showalert('red', 'Error while login!!!', data.Response); }
     });
 }
-
 async function signup() {
-    event.preventDefault(); 
+    event.preventDefault();
     let firstname = $('#fst_name').val();
     let lastname = $('#lst_name').val();
     let email = $('#sign_up_email').val();
     let N_password = $('#newpsw').val();
     let C_password = $('#confirmpsw').val();
-
     if (!email_pattern.test(email)) {
         return showalert('red', 'Email validation error!!!', 'Please check your mail id is correct.');
     }
@@ -96,28 +63,19 @@ async function signup() {
     formdata.delete('lastname');
     formdata.delete('email');
     formdata.delete('password');
-
     formdata.append('firstname', firstname);
     formdata.append('lastname', lastname);
     formdata.append('email', email);
     formdata.append('password', N_password);
-
-
     let url = BaseURL + 'users/SignUp';
-    await API_call(url, 'POST', formdata, (data) => { 
+    await API_call(url, 'POST', formdata, (data) => {
         if (data.StatusCode === 200) {
-            // console.log(data);
             showalert('green', 'SignUp success!!!', data.Response);
             $('.signupdiv,.logindiv').slideToggle();
             return $('#signupform')[0].reset();
-        } else {
-            showalert('red', 'Error while Signup!!!', data.Response);
-        }
+        } else { showalert('red', 'Error while Signup!!!', data.Response); }
     });
 }
-
-
-
 async function sessionstore(data) {
     await sessionStorage.removeItem('UI');
     await sessionStorage.removeItem('isLoggedin');

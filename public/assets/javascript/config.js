@@ -1,3 +1,1 @@
-let config = {
-    BaseURL: `/`,
-}
+let config = { BaseURL: `/`, }

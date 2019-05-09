@@ -26,56 +26,36 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 router.post("/SignUp", (req, res) => {
   var tempUid = Token.generate();
   var temp_password = req.body.password;
-  const UserDetails = {Details: { Firstname: req.body.firstname, Lastname: req.body.lastname, Email: req.body.email, Uid: tempUid, Password: passwordHash.generate(temp_password), isVerified: true, Status: "Y" }};
-  var Usercredential = {"Details.Email": req.body.email};
+  const UserDetails = { Details: { Firstname: req.body.firstname, Lastname: req.body.lastname, Email: req.body.email, Uid: tempUid, Password: passwordHash.generate(temp_password), isVerified: true, Status: "Y" } };
+  var Usercredential = { "Details.Email": req.body.email };
   db.collection('TempClientDetails').findOne(Usercredential, (err, result) => {
     if (err) return res.json({ StatusCode: 503, Response: err.message });
     if (!result) return db.collection('TempClientDetails').insertOne(UserDetails, (err, result) => {
       if (err) return res.json({ StatusCode: 503, Response: err.message });
-      return res.json({StatusCode: 200,Response: "User Created Successfully"});
+      return res.json({ StatusCode: 200, Response: "User Created Successfully" });
     });
     return res.json({ StatusCode: 503, Response: "User Already Exist" })
   });
-
 });
 
 router.post('/Login', (req, res) => {
   var Username = req.body.username;
   var Psw = req.body.password;
-
   try {
-    if (Username == undefined || Psw == undefined) {
-      throw "";
-    }
+    if (Username == undefined || Psw == undefined) { throw "" }
   } catch (err) {
-    return res.json({
-      StatusCode: 503,
-      Response: `One or more parameters missing.Peramaters : 1.username\n2.password`
-    });
+    return res.json({ StatusCode: 503, Response: `One or more parameters missing.Peramaters : 1.username\n2.password` });
   }
-  var Usercredential = {
-    "Details.Email": Username,
-    "Details.Status": 'Y',
-    "Details.isVerified": true,
-  };
-  var findonly = {
-    _id: 0,
-    UserID: 0
-  };
+  var Usercredential = { "Details.Email": Username, "Details.Status": 'Y', "Details.isVerified": true};
+  var findonly = { _id: 0, UserID: 0 };
   db.collection('TempClientDetails').findOne(Usercredential, findonly, (err, result) => {
     if (result === null) return res.json({
       StatusCode: 400,
       Response: 'Before login please verify your mail Id (or) User was blocked by Admin (or) No data found!!!'
     });
     return Functions_controller.PasswordCheck(Psw, result.Details.Password, (pswstatus) => {
-      if (pswstatus) return res.json({
-        StatusCode: 200,
-        Response: result
-      });
-      res.json({
-        StatusCode: 400,
-        Response: "Username or Password Does Not Match!!!"
-      });
+      if (pswstatus) return res.json({ StatusCode: 200, Response: result });
+      res.json({ StatusCode: 400, Response: "Username or Password Does Not Match!!!" });
     });
   });
 });

@@ -1,5 +1,2 @@
-let DefaultDBConfig = {
-    url: ''
-}
-
+let DefaultDBConfig = {url: ''}
 module.exports = DefaultDBConfig;
