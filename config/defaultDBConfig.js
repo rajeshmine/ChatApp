@@ -1,5 +1,5 @@
 let DefaultDBConfig = {
-    url: `mongodb+srv://mine:mine@cluster0-y8lkc.mongodb.net/test`
+    url: ''
 }
 
 module.exports = DefaultDBConfig;

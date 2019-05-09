@@ -12,12 +12,12 @@ var mongoose = require('mongoose');
 
 var DBConfig = require('./config');
 
-var mongoDB = DBConfig.url;
+var mongoDB = process.env.dbConfig || DBConfig.url;
 const Token = new TokenGenerator(256, TokenGenerator.BASE58);
 const Token2 = new TokenGenerator(512, TokenGenerator.BASE66);
 
 mongoose.connect(mongoDB, {
-  dbName: 'PIM',
+  dbName: 'ChatApp',
   useNewUrlParser: true
 });
 // Get Mongoose to use the global promise library
@@ -27,7 +27,7 @@ var db = mongoose.connection;
 
 
 
-var port = process.env.PORT || 3002;
+var port = process.env.PORT;
 var users = require('./routes/users');
 
 

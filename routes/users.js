@@ -19,7 +19,7 @@ const Token = new TokenGenerator();
 var MailSendercredentials = {};
 
 // Mongoo DB Connection
-var mongoDB = DBConfig.url;
+var mongoDB =process.env.dbConfig ||  DBConfig.url;
 mongoose.connect(mongoDB, {
   dbName: 'PIM',
   useNewUrlParser: true,
@@ -55,7 +55,7 @@ router.post("/SignUp", (req, res) => {
     db.collection('TempClientDetails').insertOne(UserDetails, (err, result) => {
       // Mail Send Data
       MailSendercredentials = {
-        FromMail: 'rajeshjas20296@gmail.com',
+        FromMail: 'aswinnsh@gmail.com',
         To: req.body.email,
         Subject: `Verification Mail.\n---Chat App.`,
         Html: `<!DOCTYPE html><html lang="en"><head><title>Check Mail Status</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"><style>body {font-family: 'Varela Round', sans-serif;font-size: 14px;line-height: 1.42857143;color: #333;background-color: #c7ccdf;}.mycard{    background-color: #fff;border-radius: 5px;padding: 30px;margin: 20px auto;width: 650px;border: 1px solid #c7ccde;
@@ -149,7 +149,7 @@ router.post("/Forgotpsw/:email", (req, res) => {
         Response: 'No data found!!!'
       });
       MailSendercredentials = {
-        FromMail: 'rajeshjas20296@gmail.com',
+        FromMail: 'aswinnsh@gmail.com',
         To: result.Email,
         Subject: 'Forgot Password. -------.ChatApp',
         Html: `<!DOCTYPE html><html lang="en"><head><title>Check Mail Status</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"><style>body {font-family: 'Varela Round', sans-serif;font-size: 14px;line-height: 1.42857143;color: #333;background-color: #c7ccdf;}.mycard{    background-color: #fff;border-radius: 5px;padding: 30px;margin: 20px auto;width: 650px;border: 1px solid #c7ccde;

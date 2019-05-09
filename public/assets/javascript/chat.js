@@ -199,7 +199,6 @@ async function SendMessage() {
             Content: senddata
         }];
         addMessage(tempchatArray);
-        console.log($messages)
         $messages.animate({scrollTop:$messages[0].scrollHeight}, 'slow');
     }
 }
@@ -220,17 +219,6 @@ async function addMessage(data) {
     });
     $messages.animate({scrollTop:$messages[0].scrollHeight}, 'slow');
 }
-
-
-
-
-
-
-
-
-
-
-
 
 async function signout() {
     sessionStorage.clear();
